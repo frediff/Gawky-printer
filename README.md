@@ -245,5 +245,5 @@ If we run update.awk again before any other transactions, our program will print
 
 Moreover, the updated account.txt will be identical to its input (that is, pre-update) version.
 
-### You can use the sample [`account_in.txt`](account_in.txt) for input as `account.txt`
-### After running the AWK script check the updated `account.txt` with [`account_out.txt`](account_out.txt)
+### You can use the sample [`account-in.txt`](account-in.txt) for input as `account.txt`
+### After running the AWK script check the updated `account.txt` with [`account-out.txt`](account-out.txt)
