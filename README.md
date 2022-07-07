@@ -166,7 +166,7 @@ balance, all updated lines of 3 (we do not print the lines that are updated earl
 notification of 4. In a real-life situation, we should also have a printer interface for writing the new lines (in
 some format) to our passbook, but we do not do this now.
 [`update.awk`](update.awk) should be run as
-`$ ./update.awk account.txt`
+`$ ./update.awk account.txt` or `$ gawk -f ./update.awk account.txt`
 without any redirection. The program will print the user messages to our terminal, and overwrite the old
 file account.txt.
 The behavior of our program for the second example of passbook printing mentioned earlier is given here:
