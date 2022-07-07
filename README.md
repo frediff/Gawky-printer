@@ -143,7 +143,7 @@ only once at the end of the year.
 *`+++ Interest of this year up to the last transaction = 1432`*
 
 Our task is to write the software for the passbook printer. We use the gawk programming language to that
-effect. our program named ![`update.awk`](update.awk) should do the following.
+effect. our program named [`update.awk`](update.awk) should do the following.
 1. Read the file [`account.txt`](account.txt) which stores the transactions in the increasing sequence of dates. The date
 of the last passbook printing is not stored. Once a blank entry is located in the balance field in a
 record, all the remaining input lines starting from this line have blank balance entries.
