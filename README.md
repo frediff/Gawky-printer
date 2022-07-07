@@ -29,8 +29,8 @@ When we open our account, only the following line is added to account.txt:
 
 `22-10-2019:::31201:ACCOUNT OPENED`
 
-This line means that We open our account on Oct 22, 2019 with an opening balance of 31201. After that,
-We make transactions to/from our account. These transactions are stored in the file account.txt without the
+This line means that we opened our account on Oct 22, 2019 with an opening balance of 31201. After that,
+we make transactions to/from our account. These transactions are stored in the file account.txt without the
 balance being calculated. For example, consider the following transactions on the first few days after
 opening the account. Each transaction is either a credit transaction or a debit transaction, that is, exactly one
 of the second and the third fields in each line should contain a positive integer, and the other field would be
@@ -53,11 +53,11 @@ empty. The file account.txt looks as follows.
 `14-01-2020::11000::ATM WITHDRAWAL` <br>
 `17-01-2020::11000::ATM WITHDRAWAL`
 
-The gray entries do not have the balance field filled up. Morever, this file does not store the interest paid by
-the bank on the last day of 2019 until We update our passbook. When We update our passbook, all the
+The entries from the second line do not have the balance field filled up. Morever, this file does not store the interest paid by
+the bank on the last day of 2019 until we update our passbook. When we update our passbook, all the
 missing balances are calculated, and the interest(s) deposited (if any) at the end of the year(s) is/are also
 added. Therefore, if our update our passbook on January 20, 2020, the file account.txt updates as follows
-(assume that there are no transactions after January 17, 2020). The new items added are highlighted in red.
+(assume that there are no transactions after January 17, 2020). The new items added are in bold and italics.
 The last line printed in italics is not added to account.txt.
 
 `22-10-2019:::31201:ACCOUNT OPENED` <br>
@@ -80,10 +80,10 @@ The last line printed in italics is not added to account.txt.
 *`+++ Interest of this year up to the last transaction = 374`*
 
 Notice that the passbook printer, in addition to computing the balance after every transaction, also computes
-the interest that We get in 2019, and adds a credit entry with the date 31-12-2019. The last line is not for
-storing in the file account.txt. We may consider this as a user message shown to We on the display of the
+the interest that we get in 2019, and adds a credit entry with the date 31-12-2019. The last line is not for
+storing in the file account.txt. We may consider this as a user message shown to us on the display of the
 passbook-printing machine.
-Suppose that We make some other transactions after this passbook printing, and the file account.txt now
+Suppose that we make some other transactions after this passbook printing, and the file account.txt now
 stores the following records.
 
 `22-10-2019:::31201:ACCOUNT OPENED` <br>
@@ -111,9 +111,9 @@ stores the following records.
 `27-02-2020::9383::BANK TRANSFER` <br>
 `01-03-2020:62832:::SALARY`***
 
-The balances made after the last passbook printing are not calculated. On March 05, 2020, We update our
+The balances made after the last passbook printing are not calculated. On March 05, 2020, we update our
 passbook again. At this point, the balances are updated, and the records are changed as follows. The new
-items added are again highlighted in red. The interest is calculated but not deposited because that is done
+items added are again in bold and italics. The interest is calculated but not deposited because that is done
 only once at the end of the year.
 
 `22-10-2019:::31201:ACCOUNT OPENED` <br>
@@ -142,33 +142,32 @@ only once at the end of the year.
 `01-03-2020:62832::`***`236340`***`:SALARY` <br>
 *`+++ Interest of this year up to the last transaction = 1432`*
 
-our task is to write the software for the passbook printer. We use the gawk programming language to that
-effect. our program named update.awk should do the following.
-1. Read the file account.txt which stores the transactions in the increasing sequence of dates. The date
+Our task is to write the software for the passbook printer. We use the gawk programming language to that
+effect. our program named ![`update.awk`](update.awk) should do the following.
+1. Read the file [`account.txt`](account.txt) which stores the transactions in the increasing sequence of dates. The date
 of the last passbook printing is not stored. Once a blank entry is located in the balance field in a
 record, all the remaining input lines starting from this line have blank balance entries.
 2. If there are no new entries that need updates, a user message is displayed as follows.
-+++ No new transactions found
+`+++ No new transactions found`
 On the other hand, if there are entries that need updates, the following user message is printed. Also,
-the last balance before the first new transaction is printed (see the last page).
-+++ New transactions found
+the last balance before the first new transaction is printed.
+`+++ New transactions found`
 3. The updated lines including new balances calculated and interests deposited (if any) are printed as
-user messages. Use the format as described in the sample output shown on the last page.
+user messages. We use the format as described in the sample output shown.
 4. The interest accrued so far is also printed as the last user message.
-5. The old account.txt file is replaced by a new file (with the same name) to store the new records
+5. The old [`account.txt`](account.txt) file is replaced by a new file (with the same name) to store the new records
 starting from the day of opening the account and ending at the last transaction.
-Assume that all user messages go to our terminal. That includes the beginning line in 2, the previous
-balance, all updated lines of 3 (do not print the lines that are updated earlier), and the final interest
-notification of 4. In a real-life situation, We should also have a printer interface for writing the new lines (in
-some format) to our passbook, but We do not have to do this.
-Submit a single file update.awk which should be an executable gawk script. This should be run as
+We assume that all user messages go to our terminal. That includes the beginning line in 2, the previous
+balance, all updated lines of 3 (we do not print the lines that are updated earlier), and the final interest
+notification of 4. In a real-life situation, we should also have a printer interface for writing the new lines (in
+some format) to our passbook, but we do not do this now.
+[`update.awk`](update.awk) should be run as
 `$ ./update.awk account.txt`
-without any redirection. The program should print the user messages to our terminal, and overwrite the old
+without any redirection. The program will print the user messages to our terminal, and overwrite the old
 file account.txt.
-The behavior of our program for the second example of passbook printing mentioned earlier is given on the
-next page. 
+The behavior of our program for the second example of passbook printing mentioned earlier is given here:
 
-The input file account.txt
+The input file [`account.txt`](account.txt)
 
 `22-10-2019:::31201:ACCOUNT OPENED` <br>
 `01-11-2019:61872::93073:SALARY` <br>
@@ -195,7 +194,7 @@ The input file account.txt
 `27-02-2020::9383::BANK TRANSFER` <br>
 `01-03-2020:62832:::SALARY`
 
-What our program should print
+What our program will print
 
 `+++ New transactions found` <br>
 `Last balance = 151083` <br>
@@ -208,7 +207,7 @@ What our program should print
 `March 01, 2020 Credit of 62832 for SALARY Balance = 236340` <br>
 `+++ Interest of this year up to the last transaction = 1432`
 
-The updated file account.txt
+The updated file [`account.txt`](account.txt)
 
 `22-10-2019:::31201:ACCOUNT OPENED` <br>
 `01-11-2019:61872::93073:SALARY` <br>
@@ -235,9 +234,9 @@ The updated file account.txt
 `27-02-2020::9383:173508:BANK TRANSFER` <br>
 `01-03-2020:62832::236340:SALARY`
 
-If We run update.awk again before any other transactions, our program should print:
+If we run update.awk again before any other transactions, our program will print:
 
 `+++ No new transactions found ` <br>
 `+++ Interest of this year up to the last transaction = 1432`
 
-Moreover, the updated account.txt will be identical to its input (that is, pre-update) version.
+Moreover, the updated [`account.txt`](account.txt) will be identical to its input (that is, pre-update) version.
