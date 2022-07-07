@@ -149,12 +149,12 @@ of the last passbook printing is not stored. Once a blank entry is located in th
 record, all the remaining input lines starting from this line have blank balance entries.
 2. If there are no new entries that need updates, a user message is displayed as follows.
 
-`+++ No new transactions found`
+    `+++ No new transactions found`
 
-On the other hand, if there are entries that need updates, the following user message is printed. Also,
+    On the other hand, if there are entries that need updates, the following user message is printed. Also,
 the last balance before the first new transaction is printed.
 
-`+++ New transactions found`
+    `+++ New transactions found`
 
 3. The updated lines including new balances calculated and interests deposited (if any) are printed as
 user messages. We use the format as described in the sample output shown.
